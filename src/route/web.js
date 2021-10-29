@@ -1,12 +1,14 @@
-// import express from "express";
+import express from "express";
+import homeControllers from "../controllers/homeControllers";
+let router = express.Router();
 
-// let router = express.Router();
-
-// let initWebRoutes = (app) => {
-//     router.get('/', (req, res) => {
-//         return res.send('Hello word with Tudev');
-//     });
-//     return app.use("/", router);
+const initWebRoute = (app) => {
+    router.get('/', homeControllers.getHompage);
+    router.get('/about', (req, res) => {
+        res.send('tudev')
+    })
+    return app.use("/", router)
     
-// }
-// module.exports = initWebRoutes;
+}
+// module.export = initWebRoutes;
+export default initWebRoute;
