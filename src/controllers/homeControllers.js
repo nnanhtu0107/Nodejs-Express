@@ -1,6 +1,6 @@
 let getHompage = (rep, res) => {
     //logic o day
-    return  res.send('index.ejs')
+    return  res.render('index.ejs')
 }
 module.exports = {
     getHompage
