@@ -1,19 +1,19 @@
 import express from "express";
-import bodyParser from "body-parser";
-import viewEngine from "./config/viewEngine";
-import initWebRoutes from './route/web';
+import configViewEngine from "./configs/viewEngine";
 require('dotenv').config();
-let app = express();
 
-//config app
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
-viewEngine(app);
-initWebRoutes(app);
+const app = express();
+const port = process.env.PORT || 6969;
 
-let port = process.env.PORT || 6969; //Port == undefined =>port 6969
+configViewEngine(app);
+
+app.get('/', (req, res) => {
+    res.render('index.ejs')
+})
+app.get('/about',(req, res) => {
+    res.send('tudev')
+})
 app.listen(port, () => {
-    //callback
-    console.log("Backend Nodejs is running on the port:" + port);
-});
+    console.log(`Example app listening at http://localhost:${port}`)
+})
