@@ -5,6 +5,7 @@ let router = express.Router();
 const initWebRoute = (app) => {
     //app.METHOD(PATH, HANDLER) Basic routing
     router.get('/', homeControllers.getHompage); //method get dùng khi lấy thông tin về.
+    router.get('/detail/user/:id', homeControllers.getDetailPage);
     router.get('/about', (req, res) => {
         res.send('tudev')
     })
